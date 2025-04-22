@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
   "clean:allure": "rm -rf allure-results",
-  "test:chrome": "wdio run ./config/wdio.chrome.conf.ts",
-  "test:firefox": "wdio run ./config/wdio.firefox.conf.ts",
-  "test:file:chrome": "wdio run ./config/wdio.chrome.conf.ts",
-  "test:file:firefox": "wdio run ./config/wdio.firefox.conf.ts",
+  "test:chrome": "wdio run ./config/chrome.conf.ts",
+  "test:firefox": "wdio run ./config/firefox.conf.ts",
+  "test:file:chrome": "wdio run ./config/chrome.conf.ts",
+  "test:file:firefox": "wdio run ./config/firefox.conf.ts",
   "allure:generate": "allure generate allure-results --clean -o allure-report",
   "allure:open": "allure open allure-report"
   },
