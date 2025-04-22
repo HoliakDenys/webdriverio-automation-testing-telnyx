@@ -1,0 +1,44 @@
+name: Run WebdriverIO Tests and Deploy Allure Report
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      BASE_URL: "https://telnyx.com/"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run WebdriverIO tests
+        run: npm run test:chrome
+
+      - name: Install Allure CLI
+        run: npm install -D allure-commandline
+
+      - name: Generate Allure Report
+        run: |
+          npm run allure:generate
+          mkdir -p public/allure-report
+          mv allure-report/* public/allure-report/
+
+      - name: Deploy Allure Report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public/allure-report
+          publish_branch: gh-pages
+          force_orphan: true
