@@ -120,8 +120,11 @@
         }
 
         public async clickCookieReadMoreButton(): Promise<void> {
+            await this.cookieReadMoreButton.waitForDisplayed({ timeout: 5000 });
+            await this.cookieReadMoreButton.scrollIntoView({ block: 'center' });
+            await this.cookieReadMoreButton.waitForClickable({ timeout: 5000 });
             await this.cookieReadMoreButton.click();
-        }
+        }        
 
         public async verifyCookiePolicyPageIsOpened(): Promise<void> {
             const currentUrl = await browser.getUrl();
