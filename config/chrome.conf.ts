@@ -8,6 +8,7 @@ export const config = {
   args: [
     '--no-sandbox',
     '--disable-dev-shm-usage',
+    '--headless=new',
     '--disable-gpu',
     `--user-data-dir=/tmp/chrome-profile-${Math.floor(Math.random() * 10000)}`
   ]
