@@ -66,14 +66,12 @@ export default class GlobalCoveragePage extends BasePage {
 
     private async closeCookieBannerIfPresent(): Promise<void> {
         const cookieCloseButton = this.cookieBannerCloseButton;
-        await cookieCloseButton.waitForDisplayed({ timeout: 5000 });
         if (await cookieCloseButton.isDisplayed()) {
             await cookieCloseButton.click();
         }
     }
     
     public async verifyFilteringAndReset(country: string): Promise<void> {
-    await this.closeCookieBannerIfPresent();
 
     const rowsBefore = await this.CoverageTableNumberTypesTab.$$('tr');
     const initialCount = rowsBefore.length;
@@ -88,6 +86,8 @@ export default class GlobalCoveragePage extends BasePage {
     await this.ResetFiltersButton.waitForClickable();
     await this.ResetFiltersButton.scrollIntoView();
     await this.ResetFiltersButton.click();
+
+    await this.closeCookieBannerIfPresent();
 
     await browser.waitUntil(async () => {
         const rows = await $$('table tbody tr');
