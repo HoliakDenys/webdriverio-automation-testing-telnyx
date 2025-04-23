@@ -51,16 +51,17 @@
         }
 
         public async clickAdvancedSettingsButton(): Promise<void> {
+            await this.advancedSettingsButton.waitForClickable({ timeout: 5000 });
             await this.advancedSettingsButton.scrollIntoView();
             await this.advancedSettingsButton.click();
-        }
+        }        
 
         private async clickLinkByUrl(url: string): Promise<void> {
             const link = await $(`a[href="${url}"]`);
             await link.scrollIntoView({ block: 'center' });
-            await browser.execute(() => window.scrollBy(0, -100));
+            await link.waitForClickable({ timeout: 3000 });
             await link.click();
-        }        
+        }
 
         public async clickFooterLinkByText(linkText: string): Promise<void> {
             const url = footerLinks[linkText];
@@ -79,10 +80,15 @@
         }
 
         public async switchModel(previousModelName: string, newModelName: string): Promise<void> {
-            await this.getModelButton(previousModelName).click();
-            await this.getMenuItemByText(newModelName).click();
+            const prev = await this.getModelButton(previousModelName);
+            await prev.waitForClickable({ timeout: 5000 });
+            await prev.click();
+        
+            const next = await this.getMenuItemByText(newModelName);
+            await next.waitForDisplayed({ timeout: 5000 });
+            await next.click();
         }
-
+        
         public async clickConfirmButton(): Promise<void> {
             await this.confirmButton.scrollIntoView();
             await this.confirmButton.click();
@@ -106,6 +112,7 @@
             }
         
             const link = await $(`a[href="${url}"]`);
+            await link.waitForDisplayed({ timeout: 5000 });
             await expect(link).toHaveAttribute("href", url);
             await expect(link).toHaveAttribute("target");
         

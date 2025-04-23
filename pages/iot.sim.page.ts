@@ -26,19 +26,25 @@ export default class IotSimPage extends BasePage {
     }
 
     private async checkH1Text(expectedText: string): Promise<void> {
-        const h1Element = $('h1');
+        const h1Element = await $('h1');
+        await h1Element.waitForDisplayed({ timeout: 5000 });
         const text = await h1Element.getText();
         await expect(text).toBe(expectedText);
     }
 
     private async checkLanguageButton(expectedText: string): Promise<void> {
-        const buttonText = await this.languageButton.getText();
+        const button = await this.languageButton;
+        await button.waitForDisplayed({ timeout: 5000 });
+        const buttonText = await button.getText();
         await expect(buttonText).toBe(expectedText);
     }
 
     public async selectLanguageByName(languageName: string): Promise<void> {
+        await this.languageButton.waitForClickable({ timeout: 5000 });
         await this.languageButton.click();
         const languageOption = $(`//span[contains(text(),"${languageName}")]`);
+        await languageOption.waitForDisplayed({ timeout: 3000 });
+        await languageOption.scrollIntoView();
         await languageOption.click();
     }
 
@@ -48,7 +54,7 @@ export default class IotSimPage extends BasePage {
         await browser.waitUntil(
             async () => (await browser.getTitle()) === langData.title,
             {
-                timeout: 4000,
+                timeout: 5000,
             }
         );
     

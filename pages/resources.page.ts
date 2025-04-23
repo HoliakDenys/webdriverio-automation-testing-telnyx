@@ -70,6 +70,16 @@ export default class ResourcesPage extends BasePage {
         const stateSelector = expectedState === 'checked'
             ? `//div[@data-state="checked"]//div[text()="${filterName}"]`
             : `//div[@data-state="unchecked"]//div[text()="${filterName}"]`;
+
+        await browser.waitUntil(
+            async () => {
+                const el = await $(stateSelector);
+                return await el.isDisplayed();
+            },
+            {
+                timeout: 10000,
+            }
+        );
     
         const filter = await $(stateSelector);
         await filter.waitForExist({ timeout: 10000 });
@@ -78,11 +88,14 @@ export default class ResourcesPage extends BasePage {
             
     
     public async selectArticle(articleName: string, articleType: string = 'li'): Promise<void> {
-        await this.getElementByName(articleType, articleName).click();
+        const article = await this.getElementByName(articleType, articleName)
+        await article.waitForDisplayed({ timeout: 5000 });
+        await article.click();
     }
 
     public async toggleLink(linkName: string, linkType: string = 'a'): Promise<void> {
-        const element = await this.getElementByName(linkType, linkName)
+        const element = await this.getElementByName(linkType, linkName);
+        await element.waitForDisplayed({ timeout: 5000 });
         await element.click();
     }
 
@@ -116,7 +129,6 @@ export default class ResourcesPage extends BasePage {
     
     public async toggleAndCheckFilter(filterName: string, expectedState: 'checked' | 'unchecked'): Promise<void> {
         await this.selectFilter(expectedState === 'checked' ? filterName : undefined);
-
         await this.checkFilterVisibility(filterName);
     }    
     

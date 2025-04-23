@@ -62,28 +62,29 @@ export default class GlobalCoveragePage extends BasePage {
     
     
     public async verifyFilteringAndReset(country: string): Promise<void> {
+        await browser.waitUntil(async () => {
+            const rows = await this.CoverageTableNumberTypesTab.$$('tr');
+            return await rows.length > 1;
+        }, { timeout: 5000 });
+    
         const rowsBefore = await this.CoverageTableNumberTypesTab.$$('tr');
         const initialCount = rowsBefore.length;
     
         await this.selectCountryFromDropdown(country);
     
-        const filteredRows = await $$('table tbody tr');
-        await expect(filteredRows.length).toBe(1);
+        await browser.waitUntil(async () => {
+            const rows = await $$('table tbody tr');
+            return await rows.length === 1;
+        }, { timeout: 5000 });
     
         await this.ResetFiltersButton.click();
     
-        await browser.waitUntil(
-            async () => {
-                const afterReset = await $$('table tbody tr');
-                return await afterReset.length > 1;
-            },
-            {
-                timeout: 7000,
-            }
-        );
-        await browser.pause(1000);
+        await browser.waitUntil(async () => {
+            const rows = await $$('table tbody tr');
+            return await rows.length !== 1;
+        }, { timeout: 7000 });
     
         const finalRows = await $$('table tbody tr');
         await expect(finalRows.length).toBe(initialCount);
-    }
+    }    
 }

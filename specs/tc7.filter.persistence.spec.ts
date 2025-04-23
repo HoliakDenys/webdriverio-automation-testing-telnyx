@@ -12,7 +12,6 @@ describe('Resources Page - Filter persistence', () => {
     it(`should display the same result for "${filterName}" filter after reload`, async () => {
         await resourcesPage.selectFilter(filterName);
         await resourcesPage.reloadPage();
-        await browser.pause(2000);
         await resourcesPage.checkFilterState('checked', filterName);
     });
 });
