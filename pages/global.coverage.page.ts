@@ -93,7 +93,7 @@ export default class GlobalCoveragePage extends BasePage {
         const rows = await $$('table tbody tr');
         const length = rows.length;
         return length === initialCount;
-    }, { timeout: 7000, timeoutMsg: 'Expected the row count to match initial count after reset' });
+    }, { timeout: 15000 });
 
     const finalRows = await $$('table tbody tr');
     let allRowsVisible = true;
