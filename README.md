@@ -7,14 +7,6 @@ Tests are run inside a **Docker container** to ensure consistency across environ
 
 ---
 
-## Test Cases
-
-All test cases are documented in the following Google Sheet:
-
-[Telnyx Test Cases](https://docs.google.com/spreadsheets/d/1cPNvnhRZBOphgx9h13NlIkpKPbItQZJ9u26zrFOLU9g/edit?usp=sharing)
-
----
-
 ## Requirements
 
 - [Node.js](https://nodejs.org/) (v18 or later)
