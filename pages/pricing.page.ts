@@ -13,9 +13,8 @@ export default class PricingPage extends BasePage {
 
     public async clickPricingLinkByText(text: string): Promise<void> {
         const link = await this.getPricingLinkByText(text);
-        await link.scrollIntoView({ block: "center" });
         await link.waitForDisplayed({ timeout: 5000 });
-        await browser.execute("arguments[0].click();", link);
+        await link.click();
     }
 
     public async verifyUrlContainsExpectedPath(text: string): Promise<void> {
@@ -40,6 +39,5 @@ export default class PricingPage extends BasePage {
         await this.clickPricingLinkByText(text);
         await this.verifyUrlContainsExpectedPath(text);
         await this.verifyHeader(text);
-        await browser.back();
     }
 }
