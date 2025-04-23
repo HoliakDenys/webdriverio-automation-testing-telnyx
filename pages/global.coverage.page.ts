@@ -71,6 +71,8 @@ export default class GlobalCoveragePage extends BasePage {
             return await rows.length === 1;
         }, { timeout: 5000 });
     
+        await this.ResetFiltersButton.waitForClickable();
+        await this.ResetFiltersButton.scrollIntoView();
         await this.ResetFiltersButton.click();
     
         await browser.waitUntil(async () => {
