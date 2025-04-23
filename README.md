@@ -28,5 +28,12 @@ All test cases are documented in the following Google Sheet:
 Clone the repo:
 
 ```bash
-git clone https://github.com/HoliakDenys/webdriverio-automation-testing-telnyx.git
-cd webdriverio-automation-testing-telnyx
+git clone [https://github.com/HoliakDenys/webdriverio-automation-testing-telnyx.git
+cd webdriverio-automation-testing-telnyx](https://github.com/HoliakDenys/webdriverio-automation-testing-telnyx.git)
+```
+
+## Install dependencies
+
+```bash
+npm install
+```
