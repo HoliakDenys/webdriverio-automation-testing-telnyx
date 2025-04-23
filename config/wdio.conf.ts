@@ -10,7 +10,7 @@ export const config = {
       project: './tsconfig.json'
     }
   },
-  specs: ['../specs/tc13.homepage.menu.tabs.spec.ts'],
+  specs: ['../specs/tc14.resources.filtering.spec.ts'],
   baseUrl: process.env.BASE_URL,
   maxInstances: 1,
   logLevel: 'info',
