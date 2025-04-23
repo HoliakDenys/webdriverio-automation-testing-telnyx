@@ -10,7 +10,7 @@ export const config = {
       project: './tsconfig.json'
     }
   },
-  specs: ['../specs/tc16.resource.reset.filtering.spec.ts'],
+  specs: ['../specs/tc17.resource.filter.update.spec.ts'],
   baseUrl: process.env.BASE_URL,
   maxInstances: 1,
   logLevel: 'info',
