@@ -10,7 +10,7 @@ export const config = {
       project: './tsconfig.json'
     }
   },
-  specs: ['../specs/tc1.country.filter.spec.ts'],
+  specs: ['../specs/tc2.social.links.spec.ts'],
   baseUrl: process.env.BASE_URL,
   maxInstances: 1,
   logLevel: 'info',
