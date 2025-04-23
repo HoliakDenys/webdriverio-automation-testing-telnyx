@@ -72,35 +72,38 @@ export default class GlobalCoveragePage extends BasePage {
     }
     
     public async verifyFilteringAndReset(country: string): Promise<void> {
-        await this.closeCookieBannerIfPresent();
-        
-        const rowsBefore = await this.CoverageTableNumberTypesTab.$$('tr');
-        const initialCount = rowsBefore.length;
-    
-        await this.selectCountryFromDropdown(country);
-    
-        await browser.waitUntil(async () => {
-            const rows = await $$('table tbody tr');
-            return await rows.length === 1;
-        }, { timeout: 5000 });
-    
-        await this.ResetFiltersButton.waitForClickable();
-        await this.ResetFiltersButton.scrollIntoView();
-        await this.ResetFiltersButton.click();
-    
-        await browser.waitUntil(async () => {
-            const rows = await $$('table tbody tr');
-            return await rows.length === await initialCount;
-        }, { timeout: 7000 });
-    
-        const finalRows = await $$('table tbody tr');
-        let allRowsVisible = true;
-        for (const row of finalRows) {
-            if (!(await row.isDisplayed())) {
-                allRowsVisible = false;
-                break;
-            }
+    await this.closeCookieBannerIfPresent();
+
+    const rowsBefore = await this.CoverageTableNumberTypesTab.$$('tr');
+    const initialCount = rowsBefore.length;
+
+    await this.selectCountryFromDropdown(country);
+
+    await browser.waitUntil(async () => {
+        const rows = await $$('table tbody tr');
+        return await rows.length === 1;
+    }, { timeout: 5000 });
+
+    await this.ResetFiltersButton.waitForClickable();
+    await this.ResetFiltersButton.scrollIntoView();
+    await this.ResetFiltersButton.click();
+
+    await browser.waitUntil(async () => {
+        const rows = await $$('table tbody tr');
+        const length = rows.length;
+        return length === initialCount;
+    }, { timeout: 7000, timeoutMsg: 'Expected the row count to match initial count after reset' });
+
+    const finalRows = await $$('table tbody tr');
+    let allRowsVisible = true;
+    for (const row of finalRows) {
+        if (!(await row.isDisplayed())) {
+            allRowsVisible = false;
+            break;
         }
-        await expect(allRowsVisible).toBe(true);
-    }        
+    }
+
+    await expect(allRowsVisible).toBe(true);
+    }
+       
 }
