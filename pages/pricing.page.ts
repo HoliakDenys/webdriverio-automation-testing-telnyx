@@ -8,8 +8,8 @@ export default class PricingPage extends BasePage {
     }
 
     public getPricingLinkByText(text: string): ReturnType<WebdriverIO.Browser["$"]> {
-        return $(`//a[.//span[contains(text(), "${text}")]]`);
-    }    
+        return $(`a span=${text}`);
+    }       
 
     public async clickPricingLinkByText(text: string): Promise<void> {
         const link = await this.getPricingLinkByText(text);
