@@ -10,7 +10,7 @@ export const config = {
       project: './tsconfig.json'
     }
   },
-  specs: ['../specs/tc12.cookie.read.more.spec.ts'],
+  specs: ['../specs/tc13.homepage.menu.tabs.spec.ts'],
   baseUrl: process.env.BASE_URL,
   maxInstances: 1,
   logLevel: 'info',
