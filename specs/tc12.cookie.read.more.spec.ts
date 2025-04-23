@@ -5,6 +5,7 @@ const homePage = new HomePage();
 describe('Home Page — Cookie Policy Link', () => {
 
     before(async () => {
+        await browser.deleteCookies();
         await homePage.open();
     });
 
