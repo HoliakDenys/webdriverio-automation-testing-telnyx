@@ -43,4 +43,10 @@ export default class SolutionsPage extends BasePage {
         await this.noResultsMessage.waitForDisplayed({ timeout: 5000 });
         await expect(this.noResultsMessage).toBeDisplayed();
     }
+
+    public async clickLearnMoreLinkByText(linkText: string): Promise<void> {
+        const link = await $(`//p[text()="${linkText}"]/following-sibling::div//a`);
+        await link.waitForClickable({ timeout: 5000 });
+        await link.click();
+    }
 }

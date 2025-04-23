@@ -3,5 +3,4 @@ export const endpoints: Record<string, string> = {
     globalCoverage: '/global-coverage',
     resources: '/resources',
     iotSim: '/products/iot-sim-card',
-    pricing: '/pricing'
 };
