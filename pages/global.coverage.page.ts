@@ -6,10 +6,6 @@ export default class GlobalCoveragePage extends BasePage {
         super(endpoints.globalCoverage);
     }
 
-    public get cookieBannerCloseButton(): ReturnType<WebdriverIO.Browser["$"]> {
-        return $('div#onetrust-close-btn-container button');
-    }
-
     public get NumberTypesButton(): ReturnType<WebdriverIO.Browser["$"]> {
         return $("//button[@role='tab' and contains(text(), 'Number types')]");
     }
@@ -62,13 +58,6 @@ export default class GlobalCoveragePage extends BasePage {
                 timeout: 7000,
             }
         );
-    }
-
-    private async closeCookieBannerIfPresent(): Promise<void> {
-        const cookieCloseButton = this.cookieBannerCloseButton;
-        if (await cookieCloseButton.isDisplayed()) {
-            await cookieCloseButton.click();
-        }
     }
 
     public async clickReserFiltersButton(): Promise<void> {

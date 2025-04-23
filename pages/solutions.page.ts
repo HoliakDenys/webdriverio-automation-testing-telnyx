@@ -21,16 +21,6 @@ export default class SolutionsPage extends BasePage {
     public async enterSearchField(searchQuery: string): Promise<void> {
         await this.searchField.setValue(searchQuery);
         await browser.keys('Enter');
-    
-        await browser.waitUntil(async () => {
-            const titles = await this.AllArticlesTitles;
-            if (await titles.length === 0) return false;
-    
-            const firstText = await titles[0].getText();
-            return firstText.toLowerCase().includes(searchQuery.toLowerCase());
-        }, {
-            timeout: 5000,
-        });
     }    
 
     public async validateArticlesContainSearchText(searchQueryText: string): Promise<void> {

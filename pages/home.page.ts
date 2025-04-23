@@ -125,7 +125,7 @@
 
         public async verifyCookiePolicyPageIsOpened(): Promise<void> {
             const currentUrl = await browser.getUrl();
-            expect(currentUrl).toContain('cookie-policy');
+            await expect(currentUrl).toContain('cookie-policy');
         }
         
         public async verifyMenuTab(menuTabName: string, dataState: string, ariaExpanded: string, ): Promise<void> {
