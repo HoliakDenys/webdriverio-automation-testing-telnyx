@@ -10,7 +10,7 @@ export const config = {
       project: './tsconfig.json'
     }
   },
-  specs: ['../specs/tc9.compare.telnyx.links.spec.ts'],
+  specs: ['../specs/tc10.language.change.spec.ts'],
   baseUrl: process.env.BASE_URL,
   maxInstances: 1,
   logLevel: 'info',
