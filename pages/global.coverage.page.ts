@@ -66,6 +66,7 @@ export default class GlobalCoveragePage extends BasePage {
 
     private async closeCookieBannerIfPresent(): Promise<void> {
         const cookieCloseButton = this.cookieBannerCloseButton;
+        await cookieCloseButton.waitForDisplayed({ timeout: 5000 });
         if (await cookieCloseButton.isDisplayed()) {
             await cookieCloseButton.click();
         }
