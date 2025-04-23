@@ -11,7 +11,7 @@ describe('Global Coverage Page - Country Filtering Functionality', () => {
 
     it(`should filter coverage table by selected country: ${countryToFilter}`, async () => {
         await globalCoveragePage.clickNumberTypesButton();
-        await globalCoveragePage.selectCountryFromDropdown(countryToFilter);
+        await globalCoveragePage.selectOptionFromCountryDropdown(countryToFilter);
         await globalCoveragePage.verifyFilteringResults(countryToFilter);
     });
 });
