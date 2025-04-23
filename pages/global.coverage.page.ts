@@ -77,10 +77,17 @@ export default class GlobalCoveragePage extends BasePage {
     
         await browser.waitUntil(async () => {
             const rows = await $$('table tbody tr');
-            return await rows.length !== 1;
+            return await rows.length === await initialCount;
         }, { timeout: 7000 });
     
         const finalRows = await $$('table tbody tr');
-        await expect(finalRows.length).toBe(initialCount);
+        let allRowsVisible = true;
+        for (const row of finalRows) {
+            if (!(await row.isDisplayed())) {
+                allRowsVisible = false;
+                break;
+            }
+        }
+        await expect(allRowsVisible).toBe(true);
     }        
 }
