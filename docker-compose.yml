@@ -1,33 +1,10 @@
 services:
-  wdio:
-    build: .
-    image: wdio
-    depends_on:
-      chrome:
-        condition: service_healthy
-      firefox:
-        condition: service_healthy
-    environment:
-      BASE_URL: ${BASE_URL}
-
   chrome:
-    image: selenium/standalone-chrome
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - BASE_URL=${BASE_URL}
+    volumes:
+      - .:/app
     shm_size: 2g
-    ports:
-      - 4444:4444
-    healthcheck:
-      test: ["CMD", "/opt/bin/check-grid.sh", "--host", "0.0.0.0", "--port", "4444"]
-      interval: 5s
-      timeout: 10s
-      retries: 3
-
-  firefox:
-    image: selenium/standalone-firefox
-    shm_size: 2g
-    ports:
-      - 4445:4444
-    healthcheck:
-      test: ["CMD", "/opt/bin/check-grid.sh", "--host", "0.0.0.0", "--port", "4444"]
-      interval: 5s
-      timeout: 10s
-      retries: 3

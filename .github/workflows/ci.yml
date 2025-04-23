@@ -15,16 +15,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v2
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run WebdriverIO tests
-        run: npm run test:chrome
+      - name: Build and run Docker container
+        run: |
+          docker build -t wdio-chrome .
+          docker run --rm wdio-chrome
 
       - name: Install Allure CLI
         run: npm install -D allure-commandline
