@@ -1,0 +1,4 @@
+{
+  "using": "css selector",
+  "value": "a svg[aria-describedby=\"go-to-previous-page\"]"
+}

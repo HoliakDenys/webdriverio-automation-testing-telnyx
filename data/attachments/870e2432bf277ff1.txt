@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": ".//li[contains(., \"Choosing the best phone number\") and not(.//li)]"
+}

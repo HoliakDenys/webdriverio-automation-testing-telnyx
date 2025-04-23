@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": "//div[@data-state and @data-orientation]//h3[normalize-space(.)=\"Do Telnyx IoT SIMs support voice?\"]"
+}

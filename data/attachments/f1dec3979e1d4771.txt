@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": ".//strong[normalize-space(text()) = \" Video\"] | .//strong[not(.//strong[normalize-space(text()) = \" Video\"]) and normalize-space() = \" Video\"]"
+}

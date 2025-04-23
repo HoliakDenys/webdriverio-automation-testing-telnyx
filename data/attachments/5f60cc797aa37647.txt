@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": ".//a[contains(., \"Market trends: AI's impact on contact centers\") and not(.//a)]"
+}

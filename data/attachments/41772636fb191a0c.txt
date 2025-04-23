@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": ".//a[contains(., \"Step-by-step guide to AI implementation with Telnyx\") and not(.//a)]"
+}

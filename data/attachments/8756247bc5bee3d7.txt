@@ -1,0 +1,52 @@
+{
+  "script": "return (function(elem, id) {\n    return (function parentElement2() {\n      return this.parentElement;\n    }).call(elem, id);\n  }).apply(null, arguments)",
+  "args": [
+    {
+      "sessionId": "a31daf73cb3afb62845e500c5e93fe58",
+      "elementId": "f.CA6F54524626350A26806567422D324C.d.D9E0BCB9D39BE19196D4835BC3B06968.e.63",
+      "element-6066-11e4-a52e-4f735466cecf": "f.CA6F54524626350A26806567422D324C.d.D9E0BCB9D39BE19196D4835BC3B06968.e.63",
+      "locator": {
+        "type": "css",
+        "value": "div[data-state=\"checked\"]"
+      },
+      "selector": "div[data-state=\"checked\"]",
+      "parent": {
+        "sessionId": "a31daf73cb3afb62845e500c5e93fe58",
+        "capabilities": {
+          "acceptInsecureCerts": false,
+          "browserName": "chrome",
+          "browserVersion": "135.0.7049.114",
+          "chrome": {
+            "chromedriverVersion": "135.0.7049.114 (63fd8a7d9d09e41ba37b84386c85d5f249f848f7-refs/branch-heads/7049@{#2175})",
+            "userDataDir": "/tmp/chrome-profile-3216"
+          },
+          "fedcm:accounts": true,
+          "goog:chromeOptions": {
+            "debuggerAddress": "localhost:34891"
+          },
+          "networkConnectionEnabled": false,
+          "pageLoadStrategy": "normal",
+          "platformName": "linux",
+          "proxy": {},
+          "setWindowRect": true,
+          "strictFileInteractability": false,
+          "timeouts": {
+            "implicit": 0,
+            "pageLoad": 300000,
+            "script": 30000
+          },
+          "unhandledPromptBehavior": "ignore",
+          "webSocketUrl": "ws://localhost:40295/session/a31daf73cb3afb62845e500c5e93fe58",
+          "webauthn:extension:credBlob": true,
+          "webauthn:extension:largeBlob": true,
+          "webauthn:extension:minPinLength": true,
+          "webauthn:extension:prf": true,
+          "webauthn:virtualAuthenticators": true,
+          "wdio:driverPID": 1650
+        }
+      },
+      "isReactElement": false,
+      "isShadowElement": false
+    }
+  ]
+}

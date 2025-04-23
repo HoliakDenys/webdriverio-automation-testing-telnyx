@@ -1,0 +1,48 @@
+{
+  "script": "return (function(elem, id) {\n    return (function parentElement2() {\n      return this.parentElement;\n    }).call(elem, id);\n  }).apply(null, arguments)",
+  "args": [
+    {
+      "sessionId": "75aabefa8cc4f0f97cd8640230d5b16f",
+      "elementId": "f.D484EB3C468F1AFA819256085DB3AFCA.d.92766FBC02290EFBC3A661983414B92B.e.19",
+      "element-6066-11e4-a52e-4f735466cecf": "f.D484EB3C468F1AFA819256085DB3AFCA.d.92766FBC02290EFBC3A661983414B92B.e.19",
+      "selector": "//div[@data-state and @data-orientation]//h3[normalize-space(.)=\"Do Telnyx IoT SIMs support voice?\"]",
+      "parent": {
+        "sessionId": "75aabefa8cc4f0f97cd8640230d5b16f",
+        "capabilities": {
+          "acceptInsecureCerts": false,
+          "browserName": "chrome",
+          "browserVersion": "135.0.7049.114",
+          "chrome": {
+            "chromedriverVersion": "135.0.7049.114 (63fd8a7d9d09e41ba37b84386c85d5f249f848f7-refs/branch-heads/7049@{#2175})",
+            "userDataDir": "/tmp/chrome-profile-3216"
+          },
+          "fedcm:accounts": true,
+          "goog:chromeOptions": {
+            "debuggerAddress": "localhost:36805"
+          },
+          "networkConnectionEnabled": false,
+          "pageLoadStrategy": "normal",
+          "platformName": "linux",
+          "proxy": {},
+          "setWindowRect": true,
+          "strictFileInteractability": false,
+          "timeouts": {
+            "implicit": 0,
+            "pageLoad": 300000,
+            "script": 30000
+          },
+          "unhandledPromptBehavior": "ignore",
+          "webSocketUrl": "ws://localhost:36349/session/75aabefa8cc4f0f97cd8640230d5b16f",
+          "webauthn:extension:credBlob": true,
+          "webauthn:extension:largeBlob": true,
+          "webauthn:extension:minPinLength": true,
+          "webauthn:extension:prf": true,
+          "webauthn:virtualAuthenticators": true,
+          "wdio:driverPID": 566
+        }
+      },
+      "isReactElement": false,
+      "isShadowElement": false
+    }
+  ]
+}
