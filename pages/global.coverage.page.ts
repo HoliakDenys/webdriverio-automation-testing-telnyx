@@ -35,7 +35,7 @@ export default class GlobalCoveragePage extends BasePage {
     public async selectCountryFromDropdown(countryName: string): Promise<void> {
         const dropdownBtn = await this.SearchCountryButton;
         await dropdownBtn.waitForClickable({ timeout: 5000 });
-        await dropdownBtn.scrollIntoView();
+        await dropdownBtn.scrollIntoView({ block: 'start'});
         await dropdownBtn.click();
 
         const menuContainer = await $('div[role="menu"]');
