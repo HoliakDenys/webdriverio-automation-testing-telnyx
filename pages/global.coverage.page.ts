@@ -72,11 +72,11 @@ export default class GlobalCoveragePage extends BasePage {
     }
     
     public async verifyFilteringAndReset(country: string): Promise<void> {
-
     const rowsBefore = await this.CoverageTableNumberTypesTab.$$('tr');
     const initialCount = rowsBefore.length;
-
+;
     await this.selectCountryFromDropdown(country);
+    await this.closeCookieBannerIfPresent();
 
     await browser.waitUntil(async () => {
         const rows = await $$('table tbody tr');
