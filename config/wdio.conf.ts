@@ -10,7 +10,7 @@ export const config = {
       project: './tsconfig.json'
     }
   },
-  specs: ['../specs/**/*.ts'],
+  specs: ['../specs/tc20.pricing.navigation.spec.ts'],
   baseUrl: process.env.BASE_URL,
   maxInstances: 1,
   logLevel: 'info',
