@@ -5,11 +5,12 @@ on:
     branches:
       - main
 
+env:
+  BASE_URL: "https://telnyx.com/"
+
 jobs:
   test:
     runs-on: ubuntu-latest
-    env:
-      BASE_URL: "https://telnyx.com/"
 
     steps:
       - name: Checkout repository
@@ -18,10 +19,11 @@ jobs:
       - name: Set up Docker
         uses: docker/setup-buildx-action@v2
 
-      - name: Build and run Docker container
-        run: |
-          docker build -t wdio-chrome .
-          docker run --rm wdio-chrome
+      - name: Build Docker container
+        run: docker build -t wdio-chrome .
+
+      - name: Run WebdriverIO tests in Docker
+        run: docker run --rm -e BASE_URL=$BASE_URL wdio-chrome
 
       - name: Install Allure CLI
         run: npm install -D allure-commandline
