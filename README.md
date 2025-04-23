@@ -20,8 +20,7 @@ Tests are run inside a **Docker container** to ensure consistency across environ
 Clone the repo:
 
 ```bash
-git clone [https://github.com/HoliakDenys/webdriverio-automation-testing-telnyx.git
-cd webdriverio-automation-testing-telnyx](https://github.com/HoliakDenys/webdriverio-automation-testing-telnyx.git)
+git clone https://github.com/HoliakDenys/webdriverio-automation-testing-telnyx.git
 ```
 
 ## Install dependencies
