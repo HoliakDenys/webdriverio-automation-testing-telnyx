@@ -1,18 +1,18 @@
 require('dotenv').config();
 
-export default {
+export const config = {
   runner: 'local',
   tsConfigPath: './tsconfig.json',
   autoCompileOpts: {
     autoCompile: true,
     tsNodeOpts: {
       transpileOnly: true,
-      project: './tsconfig.json',
+      project: './tsconfig.json'
     }
   },
   specs: ['../specs/**/*.ts'],
   baseUrl: process.env.BASE_URL,
-  maxInstances: 2,
+  maxInstances: 1,
   logLevel: 'info',
   bail: 0,
   waitforTimeout: 10000,
@@ -22,14 +22,12 @@ export default {
   reporters: [['allure', { outputDir: 'allure-results' }]],
   mochaOpts: {
     ui: 'bdd',
-    timeout: 60000,
+    timeout: 60000
   },
-
   before: async () => {
     const { viewport } = await import('./viewport.conf');
     await browser.setWindowSize(viewport.width, viewport.height);
   },
-
   afterTest: async (_test: any, _context: any, { passed }: { passed: boolean }) => {
     if (!passed) {
       await browser.takeScreenshot();
