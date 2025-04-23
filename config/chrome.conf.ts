@@ -5,7 +5,13 @@ export const config = {
   capabilities: [{
     browserName: 'chrome',
     'goog:chromeOptions': {
-      args: ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu']
-    }
+  args: [
+    '--no-sandbox',
+    '--disable-dev-shm-usage',
+    '--disable-gpu',
+    '--headless=new',
+    `--user-data-dir=/tmp/chrome-profile-${Math.floor(Math.random() * 10000)}`
+  ]
+}
   }]
 };
