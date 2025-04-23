@@ -6,6 +6,10 @@ export default class GlobalCoveragePage extends BasePage {
         super(endpoints.globalCoverage);
     }
 
+    public get cookieBannerCloseButton(): ReturnType<WebdriverIO.Browser["$"]> {
+        return $('div#onetrust-close-btn-container button');
+    }
+
     public get NumberTypesButton(): ReturnType<WebdriverIO.Browser["$"]> {
         return $("//button[@role='tab' and contains(text(), 'Number types')]");
     }
@@ -59,8 +63,17 @@ export default class GlobalCoveragePage extends BasePage {
             }
         );
     }
+
+    private async closeCookieBannerIfPresent(): Promise<void> {
+        const cookieCloseButton = this.cookieBannerCloseButton;
+        if (await cookieCloseButton.isDisplayed()) {
+            await cookieCloseButton.click();
+        }
+    }
     
     public async verifyFilteringAndReset(country: string): Promise<void> {
+        await this.closeCookieBannerIfPresent();
+        
         const rowsBefore = await this.CoverageTableNumberTypesTab.$$('tr');
         const initialCount = rowsBefore.length;
     
