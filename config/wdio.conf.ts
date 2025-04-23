@@ -24,10 +24,10 @@ export const config = {
     ui: 'bdd',
     timeout: 60000
   },
-  before: async () => {
-    const { viewport } = await import('./viewport.conf');
-    await browser.setWindowSize(viewport.width, viewport.height);
-  },
+  // before: async () => {
+  //   const { viewport } = await import('./viewport.conf');
+  //   await browser.setWindowSize(viewport.width, viewport.height);
+  // },
   afterTest: async (_test: any, _context: any, { passed }: { passed: boolean }) => {
     if (!passed) {
       await browser.takeScreenshot();
