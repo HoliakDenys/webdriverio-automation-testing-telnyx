@@ -23,8 +23,8 @@ export default class GlobalCoveragePage extends BasePage {
     }       
 
     public async clickNumberTypesButton(): Promise<void> {
-        await this.NumberTypesButton.scrollIntoView();
         await this.NumberTypesButton.waitForClickable();
+        await this.NumberTypesButton.scrollIntoView();
         await this.NumberTypesButton.click();
     }
 
@@ -38,8 +38,8 @@ export default class GlobalCoveragePage extends BasePage {
         await menuContainer.waitForDisplayed({ timeout: 3000 });
 
         const countryItem = await $(`//div[@role='menuitemcheckbox']//span[text()='${countryName}']`);
-        await countryItem.scrollIntoView({ block: 'center' });
         await countryItem.waitForDisplayed({ timeout: 5000 });
+        await countryItem.scrollIntoView({ block: 'center' });
 
         await browser.execute('arguments[0].click()', countryItem);
 
@@ -60,13 +60,7 @@ export default class GlobalCoveragePage extends BasePage {
         );
     }
     
-    
     public async verifyFilteringAndReset(country: string): Promise<void> {
-        await browser.waitUntil(async () => {
-            const rows = await this.CoverageTableNumberTypesTab.$$('tr');
-            return await rows.length > 1;
-        }, { timeout: 5000 });
-    
         const rowsBefore = await this.CoverageTableNumberTypesTab.$$('tr');
         const initialCount = rowsBefore.length;
     
@@ -86,5 +80,5 @@ export default class GlobalCoveragePage extends BasePage {
     
         const finalRows = await $$('table tbody tr');
         await expect(finalRows.length).toBe(initialCount);
-    }    
+    }        
 }
